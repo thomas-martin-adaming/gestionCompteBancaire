@@ -17,30 +17,24 @@ import com.adaming.servicies.CompteService;
 @RestController
 public class CompteController {
 
-
 	@Autowired
 	CompteService compteService;
-	
-	
-	//@RequestMapping(value = "/comptes", method = RequestMethod.GET)
+
 	@GetMapping(value = "/comptes")
 	public List<Compte> findAll() {
 		return compteService.findAll();
 	}
 
-	//@RequestMapping(value = "/comptes/{id}", method = RequestMethod.GET)
 	@GetMapping(value = "/comptes/{id}")
 	public Optional<Compte> findOne(@PathVariable("id") Long id) {
 		return compteService.findOne(id);
 	}
 
-	//@RequestMapping(value = "/comptes", method = RequestMethod.POST)
 	@PostMapping(value = "/comptes")
 	public Compte save(@RequestBody Compte compte) {
 		return compteService.save(compte);
 	}
 
-	//@RequestMapping(value = "/comptes/{id}", method = RequestMethod.DELETE)
 	@DeleteMapping(value = "/comptes/{id}")
 	public void delete(@PathVariable("id") Long id) {
 		compteService.delete(id);

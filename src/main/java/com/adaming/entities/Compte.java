@@ -1,7 +1,6 @@
 package com.adaming.entities;
 
 import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -13,9 +12,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-
-
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -50,7 +46,6 @@ public abstract class Compte {
 	}
 	public Compte() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public long getIdCompte() {
 		return idCompte;
@@ -80,7 +75,5 @@ public abstract class Compte {
 	public String toString() {
 		return "Compte [idCompte=" + idCompte + ", dateCreation=" + dateCreation + ", solde=" + solde + ", utilisateur="
 				+ utilisateur + "]";
-	}
-
-	
+	}	
 }

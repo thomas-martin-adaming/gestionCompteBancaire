@@ -19,29 +19,24 @@ public class UtilisateurController {
 
 	@Autowired
 	UtilisateurService utilisateurService;
-	
-	//@RequestMapping(value = "/utilisateurs", method = RequestMethod.GET)
+
 	@GetMapping(value = "/utilisateurs")
 	public List<Utilisateur> findAll() {
 		return utilisateurService.findAll();
 	}
 
-	//@RequestMapping(value = "/utilisateurs/{id}", method = RequestMethod.GET)
 	@GetMapping(value = "/utilisateurs/{id}")
 	public Optional<Utilisateur> findOne(@PathVariable("id") Long id) {
 		return utilisateurService.findOne(id);
 	}
 
-	//@RequestMapping(value = "/utilisateurs", method = RequestMethod.POST)
 	@PostMapping(value = "/utilisateurs")
 	public Utilisateur save(@RequestBody Utilisateur utilisateur) {
 		return utilisateurService.save(utilisateur);
 	}
 
-	//@RequestMapping(value = "/utilisateurs/{id}", method = RequestMethod.DELETE)
 	@DeleteMapping(value = "/utilisateurs/{id}")
 	public void delete(@PathVariable("id") Long id) {
 		utilisateurService.delete(id);
-	}
-	
+	}	
 }

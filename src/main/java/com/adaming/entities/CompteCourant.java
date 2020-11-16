@@ -12,21 +12,15 @@ public class CompteCourant extends Compte {
 
 	public CompteCourant() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
 	public CompteCourant(double decouvert) {
 		super();
 		this.decouvert = decouvert;
 	}
-
 	public double getDecouvert() {
 		return decouvert;
 	}
-
 	public void setDecouvert(double decouvert) {
 		this.decouvert = decouvert;
-	}
-	
-	
+	}	
 }
