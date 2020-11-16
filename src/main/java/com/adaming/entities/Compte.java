@@ -3,6 +3,7 @@ package com.adaming.entities;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,11 +23,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@JsonTypeInfo( use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-@JsonSubTypes({ 
-  @Type(value = CompteCourant.class, name = "courant"), 
-  @Type(value = CompteEpargne.class, name = "epargne"), 
-})
+@DiscriminatorColumn(name = "type")
+ @JsonTypeInfo( use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+ @JsonSubTypes({ 
+   @Type(value = CompteCourant.class, name = "courant"), 
+   @Type(value = CompteEpargne.class, name = "epargne"), 
+ })
 public abstract class Compte {
 
 	@Id
@@ -34,7 +36,7 @@ public abstract class Compte {
 	private long idCompte;
 	private Date dateCreation;
 	private double solde;
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_utilisateur", referencedColumnName = "idUtilisateur")
 	private Utilisateur utilisateur;
 	
